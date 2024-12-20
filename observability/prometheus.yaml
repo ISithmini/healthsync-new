@@ -6,7 +6,13 @@ scrape_configs:
   - job_name: 'kubernetes-services'
     static_configs:
       - targets:
-        - patient-record-service.<AWS-REGION>.elb.amazonaws.com:80
-        - appointment-scheduling-service.<AWS-REGION>.elb.amazonaws.com:80
-        - notification-service.<AWS-REGION>.elb.amazonaws.com:80
-        - aggregator-service.<AWS-REGION>.elb.amazonaws.com:80
+        - patient-record-service.ap-southeast-1.elb.amazonaws.com:80
+        - appointment-service.ap-southeast-1.elb.amazonaws.com:80
+        - notification-service.ap-southeast-1.elb.amazonaws.com:80
+        - aggregator-service.ap-southeast-1.elb.amazonaws.com:80
+
+  - job_name: 'local-observability'
+    static_configs:
+      - targets:
+        - 54.255.54.250:8080   # Local application metrics endpoint
+        - 54.255.54.250:3000   # Grafana metrics endpooint
